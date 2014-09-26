@@ -4,7 +4,7 @@ before_script:
   - brew unlink cmake
   - brew install cmake
   script:
-  - ./build_and_test_travis.sh
+    - ./build_and_test_travis.sh
 
 env:
   global:
