@@ -3,8 +3,8 @@ before_script:
   - brew update
   - brew unlink cmake
   - brew install cmake
-  script:
-    - ./build_and_test_travis.sh
+script:
+  - ./build_and_test_travis.sh
 
 env:
   global:
@@ -16,13 +16,7 @@ addons:
   coverity_scan:
     project:
       name: "appcelerator/coverity_test"
-      description: "Build submitted via Travis CI"
-    notification_email:
-      - ingo@muschenetz.com
-      - mlangston@appcelerator.com
-    build_command_prepend:
-      - brew update
-      - brew unlink cmake
-      - brew install cmake
+    notification_email: ingo@muschenetz.com, mlangston@appcelerator.com
+    build_command_prepend: brew update && brew unlink cmake && brew install cmake
     build_command: ./build_and_test_travis.sh
     branch_pattern: coverity_scan
