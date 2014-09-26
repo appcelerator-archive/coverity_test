@@ -1,4 +1,10 @@
 language: objective-c
+before_script:
+  - brew update
+  - brew unlink cmake
+  - brew install cmake
+  script:
+  - ./build_and_test_travis.sh
 
 env:
   global:
