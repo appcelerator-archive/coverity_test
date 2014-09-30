@@ -1,15 +1,22 @@
+language: objective-c
+before_script:
+  - brew update
+  - brew unlink cmake
+  - brew install cmake
+script:
+  - ./build_and_test_travis.sh
+
 env:
   global:
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
-   - secure: "YtIfPET0mnUJlMCIFOExgA"
+    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+    #   via the "travis encrypt" command using the project repo's public key
+    - secure: "YtIfPET0mnUJlMCIFOExgA"
 
 addons:
   coverity_scan:
     project:
       name: "appcelerator/coverity_test"
-      description: "Build submitted via Travis CI"
-    notification_email: ingo@muschenetz.com
-    build_command_prepend: "./configure; make clean"
-    build_command:   "make -j 4"
+    notification_email: ingo@muschenetz.com, mlangston@appcelerator.com
+    build_command_prepend: brew update && brew unlink cmake && brew install cmake
+    build_command: ./build_and_test_travis.sh
     branch_pattern: coverity_scan
